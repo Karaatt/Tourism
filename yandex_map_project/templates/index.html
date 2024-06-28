@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Маршрут по Ставрополю</title>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=79350b56-34dd-47e5-9ce6-ceb5ee4ed9d9&lang=ru_RU"></script>  <!-- Вставьте здесь ваш API ключ -->
+    <style>
+        #map {
+            width: 100%;
+            height: 100vh;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+        ymaps.ready(init);
+
+        function init() {
+            var map = new ymaps.Map("map", {
+                center: [45.044699, 41.968149],
+                zoom: 13
+            });
+
+            var referencePoints = [
+                [45.044699, 41.968149, "1. Ставропольский государственный историко–культурный и природно–ландшафтный музей–заповедник им. Г.Н. Прозрителева и Г.К. Праве"],
+                [45.050061, 41.977168, "2. Казанский кафедральный собор"],
+                [45.044737, 41.961861, "3. Андреевский Кафедральный Собор"]
+            ];
+
+            var multiRoute = new ymaps.multiRouter.MultiRoute({
+                referencePoints: referencePoints.map(point => [point[0], point[1]]),
+                params: {
+                    results: 1
+                }
+            }, {
+                boundsAutoApply: true,
+                wayPointStartIconFillColor: "white",
+                wayPointFinishIconFillColor: "white",
+                wayPointIconFillColor: "white",
+                routeActiveStrokeWidth: 6,
+                routeActiveStrokeStyle: 'solid',
+                routeActiveStrokeColor: "#1E98FF"
+            });
+
+            map.geoObjects.add(multiRoute);
+
+            referencePoints.forEach(function (point, index) {
+                var placemark = new ymaps.Placemark([point[0], point[1]], {
+                    balloonContent: point[2]
+                }, {
+                    preset: 'islands#blueCircleIcon',
+                    iconCaption: point[2].split('.')[0],
+                    iconCaptionMaxWidth: '50'
+                });
+                map.geoObjects.add(placemark);
+            });
+
+            // Скрыть метки путевых точек маршрута
+            multiRoute.events.add('update', function() {
+                var wayPoints = multiRoute.getWayPoints();
+                wayPoints.each(function(wayPoint) {
+                    wayPoint.options.set('visible', false);
+                });
+            });
+        }
+    </script>
+</body>
+</html>
