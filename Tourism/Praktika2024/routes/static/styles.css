@@ -1,0 +1,181 @@
+/* static/styles.css */
+
+/* Reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom, #ffffff, #00d2ff, #3a7bd5, #00d2ff, #ffffff);
+    color: #333;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header styles */
+.header {
+    background-color: #ffffff;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.header p {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+/* Main styles */
+.main {
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Attractions section styles */
+.attractions-section {
+    margin-bottom: 30px;
+}
+
+.attractions-section h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.attractions-section form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
+
+.attractions-section label {
+    font-size: 1.1rem;
+    margin-right: 10px;
+}
+
+.attractions-section select,
+.attractions-section input[type="number"],
+.attractions-section button {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.attractions-section select:focus,
+.attractions-section input[type="number"]:focus {
+    border-color: #00d2ff;
+}
+
+.attractions-section button {
+    background-color: #00d2ff;
+    color: white;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.attractions-section button:hover {
+    background-color: #007caa;
+    transform: scale(1.05);
+}
+
+/* Remove arrows from number input */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Route section styles */
+.route-section {
+    margin-bottom: 30px;
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+.route-section h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.route-section p {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #f0f8f7;
+    border-radius: 5px;
+}
+
+.route-section ul {
+    list-style-type: none;
+}
+
+.route-section ul li {
+    font-size: 1rem;
+    margin-bottom: 5px;
+    padding: 5px;
+    background-color: #f0f8f7;
+    border-radius: 5px;
+}
+
+/* Footer styles */
+.footer {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 15px 0;
+    text-align: center;
+}
+
+.footer p {
+    font-size: 1rem;
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Media queries for responsiveness */
+@media screen and (max-width: 768px) {
+    .container {
+        padding: 0 10px;
+    }
+}
+
+/* Your existing CSS styles */
+/* ... */
+
+/* Map container styles */
+.map-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    height: 300px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+}

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tourism Route Planner - Result</title>
+</head>
+<body>
+    <h1>Your route</h1>
+    <p>Total Time: {{ route.total_time }} hours</p>
+    <p>Total Distance: {{ route.total_distance }} km</p>
+    <h2>Attractions:</h2>
+    <ul>
+        {% for attraction in route.attractions.all %}
+            <li>{{ attraction.name }} - {{ attraction.address }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'home' %}">Plan another route</a>
+</body>
+</html>
