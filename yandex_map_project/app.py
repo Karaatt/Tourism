@@ -3,7 +3,7 @@ import requests
 
 app = Flask(__name__)
 
-YANDEX_API_KEY = '3de6dadd-fc06-41d7-95b4-cf36885813d9'
+YANDEX_API_KEY = ''
 
 coordinates = [
     "45.044699,41.968149",
